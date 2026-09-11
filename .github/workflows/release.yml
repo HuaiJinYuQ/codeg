@@ -328,7 +328,7 @@ jobs:
           ls -la "$file"
 
       - name: Import Apple Developer ID certificate
-        if: contains(matrix.target, 'apple-darwin')
+        if: contains(matrix.target, 'apple-darwin') && secrets.APPLE_CERTIFICATE != ''
         shell: bash
         env:
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
@@ -339,24 +339,6 @@ jobs:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
           set -euo pipefail
-
-          missing=()
-          for name in \
-            APPLE_CERTIFICATE \
-            APPLE_CERTIFICATE_PASSWORD \
-            KEYCHAIN_PASSWORD \
-            APPLE_ID \
-            APPLE_PASSWORD \
-            APPLE_TEAM_ID; do
-            if [ -z "${!name:-}" ]; then
-              missing+=("$name")
-            fi
-          done
-
-          if [ "${#missing[@]}" -ne 0 ]; then
-            printf '::error::Missing required Apple signing secret(s): %s\n' "${missing[*]}"
-            exit 1
-          fi
 
           keychain_path="$RUNNER_TEMP/codeg-signing.keychain-db"
           certificate_path="$RUNNER_TEMP/developer-id.p12"
@@ -403,7 +385,8 @@ jobs:
           security find-identity -v -p codesigning "$keychain_path"
 
       - name: Resolve Apple Developer ID identity
-        if: contains(matrix.target, 'apple-darwin')
+        # 仅在成功导入证书（keychain 已创建）时才执行
+        if: contains(matrix.target, 'apple-darwin') && env.APPLE_KEYCHAIN_PATH != ''
         shell: bash
         run: |
           set -euo pipefail
