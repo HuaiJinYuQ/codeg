@@ -1,0 +1,64 @@
+name: Build unsigned macOS
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-unsigned-macos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-macos-arm64:
+    name: Build macOS arm64
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+          shared-key: unsigned-macos-arm64
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare codeg-mcp sidecar
+        run: pnpm tauri:prepare-sidecars --target aarch64-apple-darwin
+
+      - name: Build unsigned DMG
+        env:
+          CODEG_SKIP_SIDECAR: "1"
+        run: >-
+          pnpm tauri build
+          --target aarch64-apple-darwin
+          --bundles dmg
+          --config '{"bundle":{"createUpdaterArtifacts":false}}'
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: codez-macos-arm64-unsigned
+          path: src-tauri/target/aarch64-apple-darwin/release/bundle/dmg/*.dmg
+          if-no-files-found: error
+          retention-days: 7
