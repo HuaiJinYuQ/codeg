@@ -1620,8 +1620,8 @@
     "loadFailed": "載入失敗：{message}"
   },
   "LoginPage": {
-    "documentTitle": "登入 - codeg",
-    "brand": "Codeg",
+    "documentTitle": "登入 - codez",
+    "brand": "Codez",
     "subtitle": "輸入存取 Token 以連接到桌面端",
     "tokenPlaceholder": "Access Token",
     "connect": "連接",
@@ -4710,7 +4710,7 @@
     "openSystemSettings": "開啟系統設定",
     "openSystemSettingsFailed": "無法開啟系統通知設定。",
     "sendTest": "發送測試通知",
-    "testTitle": "Codeg",
+    "testTitle": "Codez",
     "testBody": "桌面通知已生效。",
     "testSent": "測試通知已發送。",
     "testFailed": "測試通知發送失敗。",

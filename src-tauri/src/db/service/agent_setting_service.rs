@@ -231,3 +231,57 @@ fn is_sqlite_full_error(err: &DbError) -> bool {
     let message = err.to_string();
     message.contains("database or disk is full") || message.contains("(code: 13)")
 }
+
+/// 删除 agent_setting 中大写 ID 的旧 sahaa 记录（如 `"custom:Sahaa"`）。
+/// 历史遗留清理，幂等。
+pub async fn remove_stale_sahaa(conn: &DatabaseConnection) -> Result<(), DbError> {
+    use sea_orm::EntityTrait;
+    // 精确匹配大写旧记录
+    let stale_id = r#""custom:Sahaa""#;
+    agent_setting::Entity::delete_many()
+        .filter(agent_setting::Column::AgentType.eq(stale_id))
+        .exec(conn)
+        .await?;
+    Ok(())
+}
+
+/// 将 `"custom:sahaa"` 置于 sort_order=0（最前），其余记录顺延 +1。
+/// 若 sahaa 行不存在则跳过，幂等。
+pub async fn pin_sahaa_as_default(conn: &DatabaseConnection) -> Result<(), DbError> {
+    use sea_orm::{ConnectionTrait, DbBackend, Statement};
+
+    let sahaa_id = r#""custom:sahaa""#;
+
+    // 检查 sahaa 行是否已在 sort_order=0
+    let row = agent_setting::Entity::find()
+        .filter(agent_setting::Column::AgentType.eq(sahaa_id))
+        .one(conn)
+        .await?;
+
+    let row = match row {
+        None => return Ok(()), // 尚未写入，跳过
+        Some(r) => r,
+    };
+
+    if row.sort_order == 0 && row.enabled {
+        return Ok(()); // 已经在第一位且已启用，无需操作
+    }
+
+    // 所有非 sahaa 的记录 sort_order += 1
+    conn.execute(Statement::from_string(
+        DbBackend::Sqlite,
+        format!(
+            "UPDATE agent_setting SET sort_order = sort_order + 1 WHERE agent_type != '{sahaa_id}'"
+        ),
+    ))
+    .await?;
+
+    // sahaa 置为 sort_order=0, enabled=1
+    let mut active = row.into_active_model();
+    active.sort_order = Set(0);
+    active.enabled = Set(true);
+    active.updated_at = Set(Utc::now());
+    active.update(conn).await?;
+
+    Ok(())
+}

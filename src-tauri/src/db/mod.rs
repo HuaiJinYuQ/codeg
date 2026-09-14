@@ -96,6 +96,13 @@ pub async fn init_database(
         tracing::warn!("[custom-agent] failed to hydrate custom agent registry: {e}");
     }
 
+    // 如果 sahaa 智能体尚未注册，则预置一条默认定义。
+    // sahaa 是通过 PATH 上的 `sahaa` 二进制提供的 ACP 智能体。
+    // 仅在首次启动（无此记录时）写入，不覆盖用户已修改的配置。
+    if let Err(e) = service::custom_agent_service::seed_sahaa_agent(&conn).await {
+        tracing::warn!("[custom-agent] failed to seed sahaa agent: {e}");
+    }
+
     // Load user-authorized workspace links before any file command can run, so
     // the workspace path guard follows exactly the symlinks the user created
     // and nothing else. A failure here fails *closed* (registry stays empty:

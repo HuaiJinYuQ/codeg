@@ -57,6 +57,14 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-background">
       <div className="w-full max-w-sm space-y-6 px-4">
         <div className="space-y-2 text-center">
+          {/* Zoho logo + 应用名称 */}
+          <div className="flex justify-center mb-2">
+            <img
+              src="/icon.svg"
+              alt="Codez"
+              className="h-14 w-14"
+            />
+          </div>
           <h1 className="text-2xl font-bold tracking-tight">{t("brand")}</h1>
           <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
         </div>

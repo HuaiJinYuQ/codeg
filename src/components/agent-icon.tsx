@@ -464,6 +464,23 @@ const CursorMonoIcon = memo(function CursorMonoIcon({
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyIcon = React.ComponentType<any>
 
+// Sahaa icon — 使用 sahaa-yali-logo.png 内嵌的彩色图标
+// 以 img 标签渲染，走 CustomAgentIcon 相同路径；
+// 这里单独做一个彩色 Icon 组件让它和 Claude Code 等齐平展示
+const SahaaColorIcon = memo(function SahaaColorIcon({
+  size = "1em",
+}: IconProps) {
+  return (
+    <img
+      src="/zoho-logo/sahaa-yali-logo.png"
+      alt="Sahaa"
+      width={size}
+      height={size}
+      style={{ ...baseSvgStyle, borderRadius: "20%", objectFit: "contain" }}
+    />
+  )
+})
+
 const COLOR_ICONS: Partial<Record<AgentType, AnyIcon>> = {
   claude_code: ClaudeCodeColorIcon,
   codex: CodexColorIcon,
@@ -472,6 +489,7 @@ const COLOR_ICONS: Partial<Record<AgentType, AnyIcon>> = {
   kimi_code: KimiCodeColorIcon,
   pi: PiColorIcon,
   deepseek: DeepSeekColorIcon,
+  sahaa: SahaaColorIcon,
 }
 
 const MONO_ICONS: Partial<Record<AgentType, AnyIcon>> = {

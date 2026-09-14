@@ -1620,8 +1620,8 @@
     "loadFailed": "Error al cargar: {message}"
   },
   "LoginPage": {
-    "documentTitle": "Iniciar sesión - codeg",
-    "brand": "Codeg",
+    "documentTitle": "Iniciar sesión - codez",
+    "brand": "Codez",
     "subtitle": "Introduce tu token de acceso para conectarte a la aplicación de escritorio",
     "tokenPlaceholder": "Token de acceso",
     "connect": "Conectar",
@@ -4710,7 +4710,7 @@
     "openSystemSettings": "Abrir ajustes del sistema",
     "openSystemSettingsFailed": "No se pudieron abrir los ajustes de notificaciones del sistema.",
     "sendTest": "Enviar una prueba",
-    "testTitle": "Codeg",
+    "testTitle": "Codez",
     "testBody": "Las notificaciones de escritorio funcionan.",
     "testSent": "Notificación de prueba enviada.",
     "testFailed": "No se pudo enviar la notificación de prueba.",

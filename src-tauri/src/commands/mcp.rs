@@ -3279,6 +3279,8 @@ pub fn read_servers_for_agent_type(
         // Custom agents get MCP purely over the ACP wire (`session/new`'s
         // `mcpServers`); codeg deliberately knows nothing about their native
         // config files, so there is no per-agent store to read back here.
+        // Sahaa 同样不管理本地 MCP 配置文件
+        AgentType::Sahaa => Ok(BTreeMap::new()),
         AgentType::Custom(_) => Ok(BTreeMap::new()),
     }
 }

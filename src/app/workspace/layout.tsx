@@ -74,6 +74,7 @@ import {
   DeepLinkBootstrap,
   PetFocusBridge,
 } from "@/components/workspace/deep-link-bootstrap"
+import { SahaaWelcomeDialog } from "@/components/layout/sahaa-welcome-dialog"
 import { WorkspaceOpenFolderListener } from "@/components/workspace/workspace-open-folder-listener"
 import { HeavyPluginsWarmup } from "@/components/ai-elements/heavy-plugins-warmup"
 import {
@@ -97,7 +98,7 @@ function WorkspaceDocumentTitle() {
   const { activeFolder } = useActiveFolder()
 
   useEffect(() => {
-    document.title = activeFolder ? `${activeFolder.name} - codeg` : "codeg"
+    document.title = activeFolder ? `${activeFolder.name} - codez` : "codez"
   }, [activeFolder])
 
   return null
@@ -1282,6 +1283,8 @@ function WorkspaceLayoutInner({ children }: { children: React.ReactNode }) {
                       <HeavyPluginsWarmup />
                       <DeepLinkBootstrap />
                       <PetFocusBridge />
+                      {/* Sahaa 安装提示框：首次打开时弹出，用户可选择"今后都不显示" */}
+                      <SahaaWelcomeDialog />
                       {/* Always mounted: external-change conflicts must be
                             resolvable even with the aux file tree closed. */}
                       <ExternalConflictDialog />

@@ -8204,6 +8204,8 @@ pub(crate) fn skill_storage_spec(agent_type: AgentType) -> Option<SkillStorageSp
             ],
             project_rel_dirs: vec![".gemini/skills", ".agents/skills"],
         }),
+        // Sahaa 没有专属的本地技能目录，返回 None
+        AgentType::Sahaa => None,
         // codeg cannot detect where an arbitrary ACP agent loads skills from,
         // so custom agents are gated on the user's own declaration: that the
         // agent reads the shared `.agents/skills` store (the cross-agent
@@ -9785,8 +9787,10 @@ fn cascade_update_agent_config(
             // METHOD, never a credential, so there is nothing here to
             // reconcile either.
         }
-        AgentType::Custom(_) => {
-            // Custom agents are deliberately configuration-free: codeg writes
+        AgentType::Sahaa => {
+            // Sahaa 通过 Zoho 云端服务认证，不在本地写配置文件
+        }
+                AgentType::Custom(_) => {
             // no config file for them and they are excluded from the
             // model-provider surface, so there is nothing to cascade. Whatever
             // credentials they need go through the generic launch-env panel.

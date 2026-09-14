@@ -1620,8 +1620,8 @@
     "loadFailed": "Échec du chargement : {message}"
   },
   "LoginPage": {
-    "documentTitle": "Connexion - codeg",
-    "brand": "Codeg",
+    "documentTitle": "Connexion - codez",
+    "brand": "Codez",
     "subtitle": "Saisissez votre jeton d'accès pour vous connecter à l'application de bureau",
     "tokenPlaceholder": "Jeton d'accès",
     "connect": "Se connecter",
@@ -4710,7 +4710,7 @@
     "openSystemSettings": "Ouvrir les réglages système",
     "openSystemSettingsFailed": "Impossible d'ouvrir les réglages de notifications du système.",
     "sendTest": "Envoyer un test",
-    "testTitle": "Codeg",
+    "testTitle": "Codez",
     "testBody": "Les notifications du bureau fonctionnent.",
     "testSent": "Notification de test envoyée.",
     "testFailed": "La notification de test n'a pas pu être envoyée.",

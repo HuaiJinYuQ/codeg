@@ -243,6 +243,7 @@ pub fn builtin_acp_agents() -> Vec<AgentType> {
         AgentType::DeepSeek,
         AgentType::Qoder,
         AgentType::Antigravity,
+        AgentType::Sahaa,
     ]
 }
 
@@ -271,6 +272,7 @@ pub fn registry_id_for(agent_type: AgentType) -> &'static str {
         AgentType::DeepSeek => "deepseek-acp",
         AgentType::Qoder => "qoder-cli",
         AgentType::Antigravity => "antigravity-acp",
+        AgentType::Sahaa => "sahaa",
         // A custom agent's registry id IS its identity.
         AgentType::Custom(id) => id,
     }
@@ -293,6 +295,7 @@ pub fn from_registry_id(id: &str) -> Option<AgentType> {
         "deepseek-acp" => Some(AgentType::DeepSeek),
         "qoder-cli" => Some(AgentType::Qoder),
         "antigravity-acp" => Some(AgentType::Antigravity),
+        "sahaa" => Some(AgentType::Sahaa),
         // Only ids the user has actually registered resolve. An unregistered
         // id must stay `None` so the ACP-registry picker still offers it as
         // "addable" rather than treating it as already supported.
@@ -1794,6 +1797,20 @@ pub fn get_agent_meta(agent_type: AgentType) -> AcpAgentMeta {
         },
         // Handled by the early return above; kept so the match stays
         // exhaustive without a catch-all that could swallow a new built-in.
+        AgentType::Sahaa => AcpAgentMeta {
+            agent_type,
+            supports_mcp: true,
+            name: "Sahaa",
+            description: "Sahaa AI coding agent by Zoho (native ACP via sahaa command)",
+            distribution: AgentDistribution::Npx {
+                version: "custom",
+                package: "sahaa",
+                cmd: "sahaa",
+                args: &[],
+                env: &[],
+                node_required: None,
+            },
+        },
         AgentType::Custom(_) => unreachable!("custom agents resolve via custom_registry"),
     }
 }

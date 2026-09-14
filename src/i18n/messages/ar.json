@@ -1620,8 +1620,8 @@
     "loadFailed": "فشل التحميل: {message}"
   },
   "LoginPage": {
-    "documentTitle": "تسجيل الدخول - codeg",
-    "brand": "Codeg",
+    "documentTitle": "تسجيل الدخول - codez",
+    "brand": "Codez",
     "subtitle": "أدخل رمز الوصول للاتصال بتطبيق سطح المكتب",
     "tokenPlaceholder": "رمز الوصول",
     "connect": "اتصال",
@@ -4710,7 +4710,7 @@
     "openSystemSettings": "فتح إعدادات النظام",
     "openSystemSettingsFailed": "تعذر فتح إعدادات إشعارات النظام.",
     "sendTest": "إرسال اختبار",
-    "testTitle": "Codeg",
+    "testTitle": "Codez",
     "testBody": "إشعارات سطح المكتب تعمل.",
     "testSent": "تم إرسال إشعار الاختبار.",
     "testFailed": "تعذر إرسال إشعار الاختبار.",

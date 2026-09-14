@@ -3803,7 +3803,7 @@ export function AcpConnectionsProvider({ children }: { children: ReactNode }) {
             if (nc) {
               const fn = folderNameRef.current
               void notifyDesktop("question_request", {
-                title: fn ? `${fn} - Codeg` : "Codeg",
+                title: fn ? `${fn} - Codez` : "Codez",
                 body: t("notificationQuestion", {
                   agent: getAgentLabel(nc.agentType),
                 }),
@@ -3910,7 +3910,7 @@ export function AcpConnectionsProvider({ children }: { children: ReactNode }) {
               const nc = storeRef.current.connections.get(contextKey)
               const agentLabel = nc ? getAgentLabel(nc.agentType) : "Agent"
               const fn = folderNameRef.current
-              const title = fn ? `${fn} - Codeg` : "Codeg"
+              const title = fn ? `${fn} - Codez` : "Codez"
               const count = e.settled.length
               const many = tChat("backgroundTasks.notifySettledMany", {
                 agent: agentLabel,
@@ -3990,7 +3990,7 @@ export function AcpConnectionsProvider({ children }: { children: ReactNode }) {
             if (nc) {
               const agentLabel = getAgentLabel(nc.agentType)
               const fn = folderNameRef.current
-              const title = fn ? `${fn} - Codeg` : "Codeg"
+              const title = fn ? `${fn} - Codez` : "Codez"
               // No redacted variant: the body is a fixed localized string
               // plus the agent's name, and names nothing of the user's.
               void notifyDesktop("permission_request", {
@@ -4271,7 +4271,7 @@ export function AcpConnectionsProvider({ children }: { children: ReactNode }) {
             if (nc) {
               const agentLabel = getAgentLabel(nc.agentType)
               const fn = folderNameRef.current
-              const title = fn ? `${fn} - Codeg` : "Codeg"
+              const title = fn ? `${fn} - Codez` : "Codez"
               void notifyDesktop("turn_complete", {
                 title,
                 body: t("notificationTurnComplete", { agent: agentLabel }),
@@ -4411,7 +4411,7 @@ export function AcpConnectionsProvider({ children }: { children: ReactNode }) {
           // redacted variant drops.
           if (nc && !echo) {
             const fn = folderNameRef.current
-            const title = fn ? `${fn} - Codeg` : "Codeg"
+            const title = fn ? `${fn} - Codez` : "Codez"
             void notifyDesktop("error", {
               title,
               body: t("notificationError", {

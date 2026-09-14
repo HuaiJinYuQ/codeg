@@ -180,7 +180,7 @@ function notifyFlips(
       .getState()
       .folders.find((f) => f.id === task.folder_id)
     const folderName = folder ? (folder.alias ?? folder.name) : null
-    const title = folderName ? `${folderName} - Codeg` : "Codeg"
+    const title = folderName ? `${folderName} - Codez` : "Codez"
     const review = task.status === "review"
     void notifyDesktop("work_task", {
       title,

@@ -308,6 +308,8 @@ pub fn build_agent_parser(agent_type: AgentType) -> Box<dyn AgentParser> {
         AgentType::Antigravity => Box::new(antigravity::AntigravityParser::new()),
         // Custom ACP agents have no native store to reverse-engineer; their
         // history is codeg's own ACP transcript.
+        // Sahaa 同样使用 ACP 原生转录作为历史记录
+        AgentType::Sahaa => Box::new(acp_native::AcpNativeParser::new(agent_type)),
         AgentType::Custom(_) => Box::new(acp_native::AcpNativeParser::new(agent_type)),
     };
     Box::new(RouteSanitized(inner))

@@ -10,7 +10,7 @@ function ProjectBootPageInner() {
   const t = useTranslations("ProjectBoot")
 
   useEffect(() => {
-    document.title = `${t("title")} - codeg`
+    document.title = `${t("title")} - codez`
   }, [t])
 
   return (

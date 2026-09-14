@@ -51,14 +51,14 @@ function tokenPageUrl(provider: ForgeProviderId, serverUrl: string): string {
   const base =
     serverUrl.trim().replace(/\/+$/, "") || defaultServerUrl(provider)
   if (provider === "gitlab") {
-    const params = new URLSearchParams({ name: "codeg", scopes: "api" })
+    const params = new URLSearchParams({ name: "codez", scopes: "api" })
     return `${base}/-/user_settings/personal_access_tokens?${params.toString()}`
   }
   if (provider === "gitea") {
     return `${base}/user/settings/applications`
   }
   const params = new URLSearchParams({
-    description: "codeg",
+    description: "codez",
     scopes: "repo,read:org,workflow,gist,read:user,user:email",
   })
   return `${base}/settings/tokens/new?${params.toString()}`

@@ -1441,10 +1441,10 @@
       "badge": "ACP adapter",
       "badgeHint": "For this agent Codeg installs an ACP adapter package, not the vendor CLI. The two are independent and share the same config.",
       "learnMore": "Learn more",
-      "missingWithNative": "Found your own {nativeLabel} at {nativePath}. Codeg drives agents over ACP and that CLI does not speak ACP, so Codeg needs a separate adapter package, {adapterPackage}, maintained by the Agent Client Protocol project (originally Zed). It ships its own runtime, never modifies or replaces your {nativeCmd} command, and reads the same {configDir} — your existing sign-in and settings carry over. Install it below.",
-      "missing": "Codeg drives agents over ACP and the {nativeLabel} does not speak ACP, so Codeg needs a separate adapter package, {adapterPackage}, maintained by the Agent Client Protocol project (originally Zed). It ships its own runtime, so the {nativeCmd} CLI is not required first; if you do have it, the two coexist and share the same {configDir} sign-in and settings. Install it below.",
-      "readyWithNative": "Adapter {adapterCmd} is installed — that is what Codeg launches, not your own {nativeCmd} at {nativePath}. They are separate packages that coexist, and both read {configDir}, so sign-in and settings are shared.",
-      "ready": "Adapter {adapterCmd} is installed — that is what Codeg launches. It ships its own runtime, so the {nativeLabel} is not required; install it later and the two coexist, sharing {configDir}."
+      "missingWithNative": "Found your own {nativeLabel} at {nativePath}. Codez drives agents over ACP and that CLI does not speak ACP, so Codez needs a separate adapter package, {adapterPackage}, maintained by the Agent Client Protocol project (originally Zed). It ships its own runtime, never modifies or replaces your {nativeCmd} command, and reads the same {configDir} — your existing sign-in and settings carry over. Install it below.",
+      "missing": "Codez drives agents over ACP and the {nativeLabel} does not speak ACP, so Codez needs a separate adapter package, {adapterPackage}, maintained by the Agent Client Protocol project (originally Zed). It ships its own runtime, so the {nativeCmd} CLI is not required first; if you do have it, the two coexist and share the same {configDir} sign-in and settings. Install it below.",
+      "readyWithNative": "Adapter {adapterCmd} is installed — that is what Codez launches, not your own {nativeCmd} at {nativePath}. They are separate packages that coexist, and both read {configDir}, so sign-in and settings are shared.",
+      "ready": "Adapter {adapterCmd} is installed — that is what Codez launches. It ships its own runtime, so the {nativeLabel} is not required; install it later and the two coexist, sharing {configDir}."
     },
     "cline": {
       "configDescription": "Configure Cline API provider and credentials. Settings are saved to ~/.cline/data/."
@@ -1620,8 +1620,8 @@
     "loadFailed": "Load failed: {message}"
   },
   "LoginPage": {
-    "documentTitle": "Login - codeg",
-    "brand": "Codeg",
+    "documentTitle": "Login - codez",
+    "brand": "Codez",
     "subtitle": "Enter your access token to connect to the desktop app",
     "tokenPlaceholder": "Access Token",
     "connect": "Connect",
@@ -3885,7 +3885,7 @@
     "port": "Port",
     "status": "Status",
     "autoStart": "Auto-start",
-    "autoStartHint": "Start the Web service when Codeg launches",
+    "autoStartHint": "Start the Web service when Codez launches",
     "running": "Running",
     "stopped": "Stopped",
     "processing": "Processing...",
@@ -4710,7 +4710,7 @@
     "openSystemSettings": "Open system settings",
     "openSystemSettingsFailed": "Could not open the system notification settings.",
     "sendTest": "Send a test",
-    "testTitle": "Codeg",
+    "testTitle": "Codez",
     "testBody": "Desktop notifications are working.",
     "testSent": "Test notification sent.",
     "testFailed": "The test notification could not be sent.",
@@ -5411,8 +5411,8 @@
       "terminal_only_path": "The command resolves in your terminal but not in the app — a GUI PATH gap. Launch the app from a terminal, or reinstall from Agent Settings.",
       "npm_prefix_timeout": "npm prefix -g was too slow (over 1.5s), so fallback detection was skipped. Restart the app and try again.",
       "node_too_old": "Your active Node.js is older than this agent requires. Upgrade Node.js.",
-      "adapter_missing_native_present": "Your own {agent} CLI is installed, but Codeg launches a separate ACP adapter package — and that one isn't installed yet. Install it from Agent Settings; it won't touch your CLI and shares the same sign-in.",
-      "adapter_missing": "Codeg launches a separate ACP adapter package for {agent}, and it isn't installed yet. Install it from Agent Settings — installing the vendor CLI alone is not enough."
+      "adapter_missing_native_present": "Your own {agent} CLI is installed, but Codez launches a separate ACP adapter package — and that one isn't installed yet. Install it from Agent Settings; it won't touch your CLI and shares the same sign-in.",
+      "adapter_missing": "Codez launches a separate ACP adapter package for {agent}, and it isn't installed yet. Install it from Agent Settings — installing the vendor CLI alone is not enough."
     }
   },
   "TokenUsage": {

@@ -1620,8 +1620,8 @@
     "loadFailed": "Falha ao carregar: {message}"
   },
   "LoginPage": {
-    "documentTitle": "Entrar - codeg",
-    "brand": "Codeg",
+    "documentTitle": "Entrar - codez",
+    "brand": "Codez",
     "subtitle": "Digite seu token de acesso para conectar ao aplicativo de desktop",
     "tokenPlaceholder": "Token de acesso",
     "connect": "Conectar",
@@ -4710,7 +4710,7 @@
     "openSystemSettings": "Abrir configurações do sistema",
     "openSystemSettingsFailed": "Não foi possível abrir as configurações de notificação do sistema.",
     "sendTest": "Enviar um teste",
-    "testTitle": "Codeg",
+    "testTitle": "Codez",
     "testBody": "As notificações do sistema estão funcionando.",
     "testSent": "Notificação de teste enviada.",
     "testFailed": "Não foi possível enviar a notificação de teste.",
